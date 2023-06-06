@@ -2,7 +2,6 @@ import { Drop, MagnifyingGlass, MapPin, Wind } from "@phosphor-icons/react";
 import axios from "axios";
 import {  useEffect,useState } from "react";
 import { WeatherData } from "../../interfaces/WeatherData";
-// import { unsplashApiURL, weatherApiURL } from "../../api.ts";
 
 type CardClimaProps = {
   setBackgroundImage: (imageUrl: string) => void;
