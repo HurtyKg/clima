@@ -15,6 +15,7 @@ interface CityData{
 export function CardClima({ setBackgroundImage }: CardClimaProps)  {
  const [city, setCity] = useState('');
  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+ const [error, setError] = useState<string | null>(null);
 
  const handleCity = (e: React.ChangeEvent<HTMLInputElement>) => {
   setCity(e.target.value);
@@ -43,12 +44,13 @@ const getCity = () => {
     })
     .catch((err) => {
       console.error(err);
+      setError('Erro ao obter dados do clima');
     });
 };
 
 
 useEffect(() => {
-  getCity();
+  console.log('rodando');
 }, []);
 
 
@@ -68,7 +70,11 @@ const getWeather = (cityData:CityData) => {
       };
       setWeatherData(weatherData);
     })
-    .catch((err) => console.error(err));
+    .catch((err) => {
+      console.error(err);
+      setError('Erro ao obter dados do clima');
+    });
+
 }
 
 const getBackgroundImage = () => {
@@ -97,6 +103,7 @@ const getBackgroundImage = () => {
           <MagnifyingGlass size={20} color="#0a0a0a" />
         </button>
       </div>
+      {error && <p className="error-message">{error}</p>}
       {weatherData && weatherData.weather && (
        <div className="content-previsão">
        <MapPin size={28} color="#D5D8DC" weight="fill" />
