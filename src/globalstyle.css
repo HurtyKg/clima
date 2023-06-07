@@ -24,6 +24,7 @@ body {
 
 .sub-container {
  max-width: 450px;
+ min-width:320px;
  padding: 2rem;
   
  background-color: #0083FF;
