@@ -32,7 +32,7 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 
 const getCity = () => {
   axios
-    .get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=56e52fc674af804f94f4716fa17b2490&Lang=pt`)
+    .get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=56e52fc674af804f94f4716fa17b2490&Lang=pt`)
     .then((response) => {
       const cityData = response.data[0];
       if (cityData) {
@@ -57,7 +57,7 @@ useEffect(() => {
 const getWeather = (cityData:CityData) => {
   const { lat, lon } = cityData;
   axios
-    .get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=56e52fc674af804f94f4716fa17b2490&lang=pt`)
+    .get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=56e52fc674af804f94f4716fa17b2490&lang=pt`)
     .then((response) => {
       const kelvinToCelsius = response.data.main.temp - 273.15;
       const roundedTemp = Math.round(kelvinToCelsius);
@@ -74,7 +74,6 @@ const getWeather = (cityData:CityData) => {
       console.error(err);
       setError('Erro ao obter dados do clima');
     });
-
 }
 
 const getBackgroundImage = () => {
