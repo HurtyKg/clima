@@ -35,11 +35,11 @@ const getCity = () => {
     .get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=56e52fc674af804f94f4716fa17b2490&Lang=pt`)
     .then((response) => {
       const cityData = response.data[0];
-      if (cityData) {
+      if (cityData ) {
         getWeather(cityData);
         getBackgroundImage();
       } else {
-        console.error('Nome da cidade inválido');
+        alert('Nome da cidade inválido');
       }
     })
     .catch((err) => {
